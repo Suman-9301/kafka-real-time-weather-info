@@ -1,10 +1,13 @@
 from kafka import KafkaConsumer
 import json
+import os
+from dotenv import load_dotenv
 
-TOPIC = 'test-topic'  # Replace with your topic name
-KAFKA_SERVER = 'localhost:9092'
+load_dotenv()
 
-# === KAFKA CONSUMER ===
+TOPIC = os.getenv('TOPIC')
+KAFKA_SERVER = os.getenv('KAFKA_SERVER')
+
 consumer = KafkaConsumer(
     TOPIC,
     bootstrap_servers=KAFKA_SERVER,
